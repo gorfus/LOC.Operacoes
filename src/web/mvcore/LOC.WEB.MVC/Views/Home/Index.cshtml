@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Operações";
+}
+
+<div class="row">
+    <div class="col-6">
+        <form id="frm-divisores">
+            <div class="card">
+                <div class="card-header ">
+                    <span class="card-title">Somente Divisores</span>
+                </div>
+                <div class="card-body">
+                    <input type="number" class="form-control mb-2" name="valor" id="valor-divisor" placeholder="ex. 45">
+                    <a class="btn btn-primary float-right text-white" onclick="RetornarDivisores()">Enviar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-6">
+        <form class="mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Divisores com Números Primos</span>
+                </div>
+                <div class="card-body">
+                    <input type="number" class="form-control mb-2" name="valor" id="valor-divisor-e-primo" placeholder="ex. 45">
+                    <a class="btn btn-secondary float-right text-white" onclick="RetornarDivisoresComNumerosPrimos()">Enviar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">Resultado: </span>
+            </div>
+            <div class="card-body" id="resultado">
+                <h4 class="text-muted" id="operacao"></h4>
+                <div class="row">
+                    <div class="col-12 " id="container-divisores">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.11.6/xlsx.core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>
+
+    <script type="text/javascript">
+        function RetornarDivisores() {
+            $.ajax(
+                {
+                    url: "/Operacoes/RetornarDivisores",
+                    type: "GET",
+                    data: { valor: $("#valor-divisor").val() },
+                    success: function (data) {
+                        $('#container-divisores').html('');
+                        $("#operacao").text('Retornar somente divisores do número ' + $("#valor-divisor").val());
+                        $('#container-divisores').append('<span class="text-info"> Divisores </span>');
+                        $.each(data.divisores, function (i, value) {
+                            $('#container-divisores').append('<span class="badge badge-info mr-1">' + value + '</span>');
+                        });
+                    },
+                    error: function (data, textStatus, jqXHR) {
+                        alert("Houve um erro crítico.")
+                    }
+                }
+            );
+        }
+
+        function RetornarDivisoresComNumerosPrimos() {
+            $.ajax(
+                {
+                    url: "/Operacoes/RetornarDivisoresComNumerosPrimos",
+                    type: "GET",
+                    data: { valor: $("#valor-divisor-e-primo").val() },
+                    success: function (data) {
+                        $('#container-divisores').html('');
+                        $("#operacao").text('Retornar divisores do número ' + $("#valor-divisor-e-primo").val() + ' com números primos');
+
+                        $('#container-divisores').append('<span class="text-info"> Divisores </span>');
+                        $.each(data.divisores, function (i, value) {
+                            $('#container-divisores').append('<span class="badge badge-info mr-1">' + value + '</span>');
+                        });
+                        $('#container-divisores').append('</br>');
+                        $('#container-divisores').append('<span class="text-success "> Números primos </span>');
+                        $.each(data.divisoresPrimos, function (i, value) {
+                            $('#container-divisores').append('<span class="badge badge-success mr-1">' + value + '</span>');
+                        });
+                    },
+                    error: function (data, textStatus, jqXHR) {
+                        alert("Houve um erro crítico.")
+                    }
+                }
+            );
+        }
+
+    </script>
+}
