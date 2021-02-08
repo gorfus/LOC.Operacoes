@@ -56,6 +56,10 @@
 
     <script type="text/javascript">
         function RetornarDivisores() {
+            if ($("#valor-divisor").val() == "") {
+                alert("Preencha um valor antes de enviar");
+                return false;
+            }
             $("#valor-divisor-e-primo").val('');
 
             $.ajax(
@@ -80,6 +84,11 @@
         }
 
         function RetornarDivisoresComNumerosPrimos() {
+            if ($("#valor-divisor-e-primo").val() == "") {
+                alert("Preencha um valor antes de enviar");
+                return false;
+            }
+
             $("#valor-divisor").val('');
 
             $.ajax(
