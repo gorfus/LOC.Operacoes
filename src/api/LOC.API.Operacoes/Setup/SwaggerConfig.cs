@@ -14,7 +14,7 @@ namespace LOC.API.Operacoes.Setup
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "Localiza - Teste Prático",
+                    Title = "Localiza - Teste prático para oporunidade: Software Developer III .net core",
                     Description = "Esta api é responsável por operações de Números.",
                     Contact = new OpenApiContact() { Name = "Ricardo Araujo", Email = "elisiarior@hotmail.com" },
                 });
