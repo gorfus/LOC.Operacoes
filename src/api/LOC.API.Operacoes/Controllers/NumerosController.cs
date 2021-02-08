@@ -1,5 +1,6 @@
 ﻿using LOC.Operacoes.Numeros.Entidades;
 using LOC.Operacoes.Numeros.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -21,6 +22,8 @@ namespace LOC.API.Operacoes.Controllers
         }
 
         [HttpGet("retornar-divisores-com-numeros-primos/{valor:int}")]
+        [ProducesResponseType(typeof(Numero), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RetornarDivisoresComNumerosPrimos(int valor)
         {
             try
@@ -37,6 +40,8 @@ namespace LOC.API.Operacoes.Controllers
         }
 
         [HttpGet("retornar-divisores/{valor:int}")]
+        [ProducesResponseType(typeof(Numero), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> RetornarDivisores(int valor)
         {
             try

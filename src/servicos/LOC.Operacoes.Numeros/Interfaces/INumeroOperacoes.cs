@@ -6,6 +6,5 @@ namespace LOC.Operacoes.Numeros.Interfaces
     {
         void RetornarDivisores(Numero num);
         void RetornarDivisoresComNumerosPrimos(Numero num);
-        void RetornarNumerosPrimosDeDivisores(Numero num);
     }
 }

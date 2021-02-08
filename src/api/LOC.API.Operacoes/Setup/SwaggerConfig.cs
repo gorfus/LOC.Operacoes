@@ -14,36 +14,10 @@ namespace LOC.API.Operacoes.Setup
             {
                 c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Title = "MRV CMS Api Gateway",
-                    Description = "Esta api é responsável pela gravação e leitura todos formularios de HotSites, Portal de Imoveis, CHAT e todos. Geração de Relatórios e gerador de conteúdo dos Portais",
-                    Contact = new OpenApiContact() { Name = "Agência Open", Email = "teste@agenciaopen.com" },
+                    Title = "Localiza - Teste Prático",
+                    Description = "Esta api é responsável por operações de Números.",
+                    Contact = new OpenApiContact() { Name = "Ricardo Araujo", Email = "elisiarior@hotmail.com" },
                 });
-
-                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                //{
-                //    Description = "Insira o token JWT desta maneira: Bearer {seu token}",
-                //    Name = "Authorization",
-                //    Scheme = "Bearer",
-                //    BearerFormat = "JWT",
-                //    In = ParameterLocation.Header,
-                //    Type = SecuritySchemeType.ApiKey
-                //});
-
-                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                //{
-                //    {
-                //        new OpenApiSecurityScheme
-                //        {
-                //            Reference = new OpenApiReference
-                //            {
-                //                Type = ReferenceType.SecurityScheme,
-                //                Id = "Bearer"
-                //            }
-                //        },
-                //        new string[] {}
-                //    }
-                //});
-
             });
         }
 

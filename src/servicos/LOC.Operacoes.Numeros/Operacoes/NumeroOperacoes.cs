@@ -20,6 +20,7 @@ namespace LOC.Operacoes.Numeros.Interfaces
                 if ((num.Valor % i) == 0)
                     num.AdicionarDivisor(i);
             }
+
         }
 
         public void RetornarNumerosPrimosDeDivisores(Numero num)

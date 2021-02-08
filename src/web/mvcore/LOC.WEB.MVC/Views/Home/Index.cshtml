@@ -56,6 +56,8 @@
 
     <script type="text/javascript">
         function RetornarDivisores() {
+            $("#valor-divisor-e-primo").val('');
+
             $.ajax(
                 {
                     url: "/Operacoes/RetornarDivisores",
@@ -64,6 +66,7 @@
                     success: function (data) {
                         $('#container-divisores').html('');
                         $("#operacao").text('Retornar somente divisores do número ' + $("#valor-divisor").val());
+
                         $('#container-divisores').append('<span class="text-info"> Divisores </span>');
                         $.each(data.divisores, function (i, value) {
                             $('#container-divisores').append('<span class="badge badge-info mr-1">' + value + '</span>');
@@ -77,6 +80,8 @@
         }
 
         function RetornarDivisoresComNumerosPrimos() {
+            $("#valor-divisor").val('');
+
             $.ajax(
                 {
                     url: "/Operacoes/RetornarDivisoresComNumerosPrimos",
@@ -90,7 +95,9 @@
                         $.each(data.divisores, function (i, value) {
                             $('#container-divisores').append('<span class="badge badge-info mr-1">' + value + '</span>');
                         });
+
                         $('#container-divisores').append('</br>');
+
                         $('#container-divisores').append('<span class="text-success "> Números primos </span>');
                         $.each(data.divisoresPrimos, function (i, value) {
                             $('#container-divisores').append('<span class="badge badge-success mr-1">' + value + '</span>');
